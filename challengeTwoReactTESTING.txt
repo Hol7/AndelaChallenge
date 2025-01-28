@@ -1,0 +1,153 @@
+	
+Challenge #2
+Scored
+ Your Answers
+ 
+ Your Notes (Editable)
+1.
+React Testing Library differs from Enzyme in that it helps you test implementation details to ensure the internals of the component behave exactly as they should.
+true
+false
+2.
+screen queries are generally preferred over render queries in RTL.
+true
+false
+3.
+It's important to add cleanup() to an afterEach block since RTL doesn't do this automatically in a typical testing setup.
+true
+false
+4.
+The RTL philosophy is to not test implementation details. One drawback to this is that 100% code coverage is typically impossible.
+true
+false
+5.
+When testing custom hooks directly, which rendering call would help eliminate the necessity of a component wrapper?
+cleanUp
+6.
+Choose the selection ordering from most to least preferred, with most preferred towards the beginning (left) and least preferred towards the end (right) of the list.
+aria role, test id, text
+aria role, text, test id
+test id, aria role, text
+test id, text, aria role
+text, aria role, test id
+text, test id, aria role
+7.
+Which matchers aren't part of the base React Testing Library?
+.toBeDisabled()
+.toBeInTheDocument()
+.toHaveTextContent()
+.toMatchSnapshot()
+8.
+Select the methods which are asynchronous.
+findBy
+getBy
+queryBy
+waitFor
+9.
+If you use a getBy method, no expect assertion is strictly necessary.
+true
+false
+10.
+If you want to assert that an element does not exist in the document, queryBy is the preferred selection method.
+true
+false
+11.
+If you use getByTestId and there are multiple elements matched, the first one is returned.
+true
+false
+12.
+A good use case for the baseElement option for render is testing...
+animation effects
+deeply-nested component trees
+render props
+portals
+13.
+Which render method would be most likely to be useful to check for memory leaks?
+asFragment
+cleanup
+container
+unmount
+14.
+The rendered container property is the typical way to run queries and traverse the DOM tree.
+true
+false
+15.
+Mocking useState isn't a good idea. This is an implementation detail and isn't public from outside the component.
+true
+false
+16.
+React Testing Library is strictly for component unit testing. Integration tests aren't supported.
+true
+false
+17.
+Generally, querySelector, querySelectorAll, getElementById and similar browser DOM methods won't be used much in RTL.
+true
+false
+18.
+If you want to run queries inside a component's children, which RTL render return method is the best choice?
+children
+container
+inside
+within
+19.
+Consider the following component:
+
+render(<input type="text" name="userName" />);
+Will the following selection succeed?
+
+screen.getByRole("textbox", {name: "userName"});
+yes
+no
+20.
+Consider the following component:
+
+render(<h1>hello world</h1>);
+Will the following selection succeed?
+
+screen.getByText("hello");
+yes
+no
+21.
+Consider the following component:
+
+render(<h1>    hello    world   </h1>);
+Will the following selection succeed?
+
+screen.getByText("hello world");
+yes
+no
+22.
+Does the following test use React Testing Library?
+
+describe('Output element', () => {
+  it('should render an element with class name "output"', () => {
+    const calc = mount(<Calculator />);
+    expect(calc.find('.output').exists()).toBe(true);
+  });
+});
+yes
+no
+23.
+Is testInstance.findAllByProps(props) part of the React Testing Library API?
+yes
+no
+24.
+queryAllBy returns an empty array when no elements are located.
+true
+false
+25.
+To trigger an event on an element, you'd use...
+click
+fireEvent
+simulate
+trigger
+26.
+To issue trusted events, you can use the user-event extension.
+true
+false
+27.
+If you have a test that contains an asynchronous RTL call like waitFor or findBy, but no fireEvent calls, which hook among the options listed is most likely to be present in the component?
+useCallback
+useContext
+useEffect
+useMemo

@@ -1,0 +1,257 @@
+	
+Challenge #1
+Scored
+ Your Answers
+ 
+ Your Notes (Editable)
+1.
+In the following code snippet, console.log(username) will print "react".
+
+const [username, setUsername] = useState("");
+setUsername("react");
+console.log(username);
+true
+false
+2.
+Keys for JSX lists do not need to be globally unique.
+true
+false
+3.
+Unlike other popular front-end libraries like Vue and Angular, React doesn't support direct assignments to mutate state, like:
+
+this.state.foo = 42;
+true
+false
+4.
+Which data structure best describes the way components in a React app are organized?
+list
+graph
+directed acyclic graph
+binary tree
+tree
+5.
+In React functional components, binding handlers to this is a typical step to perform in the constructor method.
+true
+false
+6.
+A React component typically copies props into state as soon as possible.
+true
+false
+7.
+If you have two child components that share a parent component and one child must re-render in response to an event that triggers in the other child, which technique is the most likely solution to the problem?
+lifting state to the parent
+inheritance
+using a higher-order component
+using a portal
+using context
+8.
+If you'd like to use an existing component as a black box for composing another component's functionality, which technique is the most likely solution to the problem?
+lifting state to the parent
+inheritance
+using a higher-order component
+using a portal
+using context
+9.
+When implementing a feature for a site-wide language or localization preference for a web application, which technique is the most likely solution to the problem?
+lifting state to the parent
+inheritance
+using a higher-order component
+using a portal
+using context
+10.
+In the below code, how many times will the Child component render? Enter the number of times as an integer in the answer field.
+
+const Child = () => <div>I'm the child...</div>;
+
+const Parent = () => {
+  const [status, setStatus] = useState("clean");
+
+  const load = async () => {
+    const response = await new Promise(resolve => 
+      setTimeout(resolve, 1000, {data: "dirty"})
+    );
+    setStatus(response.data);
+  };
+
+  useEffect(() => {
+    load();
+  }, []);
+
+  return (
+    <div>
+      <div>{status}</div>
+      <Child />
+    </div>
+  );
+};
+
+ReactDOM.render(<Parent />, document.body);
+1
+11.
+In the following component, which line of code needs to change in order to ensure that the component is rendered twice? Enter the line number only in the answer field.
+
+const Example = () => {
+  const [words, setWords] = useState([]);
+
+  const loadWords = async () => {
+    const response = await new Promise(resolve =>
+      setTimeout(resolve, 2000, {data: [
+        "apples", "bananas", "cherries"
+      ]})
+    );
+    setWords(response.data);
+  };
+
+  useEffect(() => {
+    loadWords();
+  }, [words]);
+
+  return (
+    <>
+      {words.length
+        ? <ul>
+           {words.map((e, i) =>
+              <li key={i + e}>{e}</li>
+           )}
+          </ul>
+        : <Spinner />
+      }
+    </>
+  );
+};
+15
+12.
+What's wrong with the following code snippet? Select all that apply.
+
+const Example = () => {
+  const [words, setWords] = useState([]);
+
+  useEffect(() =>
+    fetch("https://www.example.com/endpoint")
+      .then(response => setWords(response.data))
+      .catch(err => console.error(err))
+  , []);
+
+  const handleClick = e => {
+    fetch("https://www.example.com/endpoint")
+      .catch(err => console.error(err))
+    ;
+  };
+
+  return (
+    <>
+      {words.length
+        ? <ul>
+            {words.map((e, i) =>
+              <>
+                <li key={i + e}>{e}</li>
+                <button onClick={handleClick}>Click here</button>
+              </>
+            )}
+          </ul>
+        : <p>loading...</p>
+      }
+    </>
+  );
+};
+Injecting expressions into JSX requires double braces, {{ expression }}
+The key is on the wrong JSX element
+The second argument to useEffect should be [words]
+onClick should be onclick
+onClick={handleClick} should use handleClick() instead of handleClick
+The callback to words.map doesn't return anything
+useEffect shouldn't return a promise
+13.
+Error boundaries are components which are used to catch errors thrown only by their immediate children components.
+true
+false
+14.
+Choose the component type(s) that best describe this code.
+
+const FilePicker = () => {
+  const fileInput = React.createRef();
+
+  const handleSubmit = evt => {
+    evt.preventDefault();
+    console.log(fileInput.current.files[0].name);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Upload file:
+        <input type="file" ref={fileInput} />
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
+controlled component
+uncontrolled component
+higher-order component
+pure component
+functional component
+class component
+suspense component
+15.
+If you have a complex animation which requires manipulation of a <canvas> element, which React feature is the most likely solution to the problem?
+portals
+context
+refs
+higher-order components
+fragments
+16.
+Imagine you're writing a component that subscribes to an asynchronous socket feed. Which option below seems most important to remember to do?
+apply useReducer to manage socket state
+apply useCallback to ensure the socket callback doesn't cause unnecessary rerenders
+unsubscribe from the feed by returning a cleanup function in useEffect
+memoize the socket unsubscribe function using useMemo
+17.
+When writing custom hooks, there's no need to ensure that state isn't polluted between different functional components that make calls to useYourHook().
+true
+false
+18.
+Imagine you're writing a component that involves a synchronous manipulation on an <input> element. For example, when the user presses Esc, the cursor moves to the beginning of the line.
+
+You apply the cursor manipulation inside a useEffect, but you're noticing a momentary blinking effect due to the useEffect firing after the browser repaint, so the cursor movement isn't truly synchronous.
+
+Which React hook is the best solution to the problem? Write the name of the hook below.
+useRef
+19.
+Your component has grown too large and contains a useEffect call that supports a requestAnimationFrame loop. Which React feature is the most likely solution to the problem?
+writing a custom hook for the RAF loop
+memoizing the RAF loop
+using composition to create a separate component to handle the RAF loop
+using a generic helper utility file for the RAF loop
+20.
+Consider the following code snippet:
+
+const Foo = React.lazy(() => import("./Bar"));
+Which concept does this best illustate?
+code splitting
+context
+higher-order components
+forwarding refs
+portals
+21.
+JSX doesn't sanitize text contents by default. If you have contents that could contain data that's from an untrusted source, it's important to escape it manually.
+true
+false
+22.
+Sometimes a list of elements you'd like to render doesn't have a suitable unique identifier. In this case, the best practice is for the component to generate random, unique keys for the items on every render.
+true
+false
+23.
+You can use custom attributes on nodes in JSX, but they have to be entirely lowercase.
+true
+false
+24.
+PureComponent is useful when you have deeply-nested, complex state to avoid updates.
+true
+false
+25.
+Consider the following code:
+
+<Foobar autocomplete />
+What's the value of autocomplete?
+undefined
